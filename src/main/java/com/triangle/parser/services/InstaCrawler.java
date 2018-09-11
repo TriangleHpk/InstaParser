@@ -24,7 +24,7 @@ public class InstaCrawler implements ICrawler {
 	private RestTemplate restTemplate = new RestTemplate();
 
 	@Override
-	public List<Post> getPosts(String hashtag) {
+	public List<Post> getPosts(String hashtag, int count) {
 		List<Post> posts = new ArrayList<>();
 		String data = restTemplate.getForEntity(String.format(URL, hashtag), String.class).getBody();
 		JsonElement main = new JsonParser().parse(data);
@@ -33,12 +33,19 @@ public class InstaCrawler implements ICrawler {
 		JsonObject edgeAllPosts = hashtagEl.getAsJsonObject("edge_hashtag_to_media");
 		JsonArray edges = edgeAllPosts.getAsJsonArray("edges");
 		
+		if(count > edges.size()) {
+			count = edges.size();
+		}
 		
-		for(int i = 0; i < edges.size(); i++) {
+		for(int i = 0; i < count; i++) {
 			JsonObject nodeWrapper =  edges.get(i).getAsJsonObject();
 			JsonObject node = nodeWrapper.getAsJsonObject("node");
 			JsonArray innderEdges = node.getAsJsonObject("edge_media_to_caption").getAsJsonArray("edges");
-			String text = innderEdges.get(0).getAsJsonObject().getAsJsonObject("node").get("text").getAsString();
+			System.out.println("Shortcode:" + node.get("shortcode").getAsString());
+			String text = "";
+			if(innderEdges.size() > 0) {
+				text = innderEdges.get(0).getAsJsonObject().getAsJsonObject("node").get("text").getAsString();
+			}
 			Integer likes = node.getAsJsonObject().getAsJsonObject("edge_liked_by").get("count").getAsInt();
 			String image = node.getAsJsonObject().get("display_url").getAsString();
 			Long timestamp = node.get("taken_at_timestamp").getAsLong();
@@ -46,7 +53,7 @@ public class InstaCrawler implements ICrawler {
 			post.setInstaId(node.get("id").getAsString());
 			post.setShortCode(node.get("shortcode").getAsString());
 			post.setText(text);
-			post.setDate(LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), 
+			post.setDate(LocalDateTime.ofInstant(Instant.ofEpochSecond(timestamp), 
                     TimeZone.getDefault().toZoneId()));
 			post.setLikesCount(likes);
 			post.setImageUrl(image);
