@@ -15,7 +15,7 @@ public class Post {
 	@Id
 	private ObjectId id;
 	private Long idTweet;
-	private Long taskId;
+	private ObjectId taskId;
 	private String text;
 	private final Date createdAt;
 	private String fromUser;
@@ -27,7 +27,7 @@ public class Post {
 	private Integer favoriteCount;
 	private Entities entities;
 
-	public Post(ObjectId id, Long idTweet, Long taskId, String text, Date createdAt, String fromUser,
+	public Post(ObjectId id, Long idTweet, ObjectId taskId, String text, Date createdAt, String fromUser,
 			String profileImageUrl, String source, Integer retweetCount, boolean retweeted, boolean favorited,
 			Integer favoriteCount, Entities entities) {
 		super();

@@ -1,4 +1,4 @@
-package controllers;
+package com.triangle.parser.controllers;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
