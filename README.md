@@ -1,2 +1,2 @@
-# TwitterParser
-Project for searching posts on Twitter by hashtags
+# InstagramParser
+Project for searching posts on Instagram by hashtags
