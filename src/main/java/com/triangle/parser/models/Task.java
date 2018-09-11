@@ -18,5 +18,4 @@ public class Task {
 	private List<String> hashtags;
 	private Integer postCount;
 	
-	
 }
