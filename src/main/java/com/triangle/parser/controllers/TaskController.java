@@ -1,14 +1,19 @@
 package com.triangle.parser.controllers;
 
+import java.util.List;
+
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.triangle.parser.models.Post;
 import com.triangle.parser.models.Task;
+import com.triangle.parser.services.InstaCrawler;
 import com.triangle.parser.services.TaskService;
 
 @RestController
@@ -16,6 +21,7 @@ public class TaskController {
 	
 	@Autowired
 	private TaskService taskService;
+
 	/*
 	 * Controller returns Posts saved into DB
 	 */
@@ -37,4 +43,5 @@ public class TaskController {
 		//taskService.todo
 		return null;
 	}
+
 }
