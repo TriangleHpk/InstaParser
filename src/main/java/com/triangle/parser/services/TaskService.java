@@ -17,8 +17,8 @@ public class TaskService {
 
 	public ObjectId createTask(Task task) {
 		repository.save(task);
-		ArrayList<Task> tasks = (ArrayList<Task>) repository.findAll();
-		return tasks.stream().filter(eachTask -> eachTask.equals(task)).findFirst().get().getId();
+		// TODO
+		return task.getId();
 	}
 	
 	public Task getTaskById(ObjectId id) {
