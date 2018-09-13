@@ -20,6 +20,7 @@ public class Post {
     @JsonSerialize(using = ToStringSerializer.class)
 	private ObjectId id;
 	private String instaId;
+	@JsonSerialize(using = ToStringSerializer.class)
 	private ObjectId taskId;
 	private String text;
 	private String shortCode;

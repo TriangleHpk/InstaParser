@@ -1,12 +1,9 @@
 package com.triangle.parser.services;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -41,6 +38,10 @@ public class PostService {
 		
 		posts.forEach(post -> post.setTaskId(task.getId()));
 		postRepository.saveAll(posts);
+	}
+	
+	public List<Post> findByTaskId(ObjectId id){
+		return postRepository.findByTaskId(id);
 	}
 
 }
