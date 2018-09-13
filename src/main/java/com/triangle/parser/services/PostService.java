@@ -23,6 +23,11 @@ public class PostService {
 	
 	@Autowired
 	private InstaCrawler instaCrawler;
+	
+	/**
+	 * Searches posts in Instagram by given task, saves posts to the db.
+	 * @param task
+	 */
 	@Async
 	public void applyTask(Task task) {
 		List<List<Post>> list = new ArrayList<>();
@@ -33,20 +38,7 @@ public class PostService {
 		
 		List<Post> posts = new ArrayList<Post>();
 		list.forEach(posts::addAll);
-		/*
-		Collections.sort(posts, new Comparator<Post>() {
-
-			@Override
-			public int compare(Post o1, Post o2) {
-				if(o1.getDate().isAfter(o2.getDate()))
-					return 1;
-				else {
-					return -1;
-				}
-			}
-			
-		});
-		*/
+		
 		posts.forEach(post -> post.setTaskId(task.getId()));
 		postRepository.saveAll(posts);
 	}

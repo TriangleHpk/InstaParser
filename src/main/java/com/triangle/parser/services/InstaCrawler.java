@@ -24,6 +24,9 @@ public class InstaCrawler implements ICrawler {
 	
 	private RestTemplate restTemplate = new RestTemplate();
 
+	/**
+	 * Parses posts from Instagram. Returns list of parsed posts by hashtag and count
+	 */
 	@Override
 	public List<Post> getPosts(String hashtag, int count) {
 		List<Post> posts = new ArrayList<>();
