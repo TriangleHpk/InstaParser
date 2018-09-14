@@ -12,6 +12,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.13.0/dojo/dojo.js"></script>
   <script>
 
+  
     var obj = $('form').serializeJSON();
     var jsonString = JSON.stringfy(obj);
     alert(jsonString)
@@ -20,17 +21,30 @@
 
     var obj = $('form').serializeJSON();
 
-    $.ajax({
-        type: 'POST',
-        url: '',
-        dataType: 'json',
-        data: JSON.stringify(obj),
-        contentType : 'application/json',
-        success: function(data) {
-            alert(data)
-        }
-    });
+    // $.ajax({
+    //     type: 'POST',
+    //     url: '',
+    //     dataType: 'json',
+    //     data: JSON.stringify(obj),
+    //     contentType : 'application/json',
+    //     success: function(data) {
+    //         alert(data)
+    //     }
+    // });
+    var heshtag=document.getElementById("hesh").value;
+    var heshtag=document.getElementById("lim").value;
+    var obj = { hashtags: "summer", postCount: 30};
     
+    $.ajax({
+    url: 'http://localhost:8080/task/create',
+    type: 'POST',
+    data: JSON.stringify(obj),
+    dataType: 'json',
+    success: function(data)
+           {
+               alert(data); // show response from the php script.
+           }
+});
 
   </script>
 </head>
@@ -128,14 +142,14 @@
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                       <div class="form-group">
                           <label>Enter #</label>
-                          <input type="text" class="form-control"/>
+                          <input type="text" id="hesh" class="form-control"/>
                         </div>
                       </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                       <div class="form-group" class="form-control">
                           <label>LIMIT</label>
                           <div class="theme-select">
-                            <input type="text" class="form-control __plannerSelect">
+                            <input type="text" id="lim" class="form-control __plannerSelect">
                             </input>
                           </div>
                         </div>
