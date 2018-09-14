@@ -6,7 +6,9 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,9 +16,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Post {
-	@Id
+	@Id 
+    @JsonSerialize(using = ToStringSerializer.class)
 	private ObjectId id;
 	private String instaId;
+	@JsonSerialize(using = ToStringSerializer.class)
 	private ObjectId taskId;
 	private String text;
 	private String shortCode;

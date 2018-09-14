@@ -12,10 +12,13 @@ public class TaskService {
 	
 	@Autowired
 	private TaskRepository repository;
+	
+	@Autowired
+	private PostService postService;
 
-	public ObjectId createTask(Task task) {
+	public ObjectId createTask(Task task)  {
 		repository.save(task);
-		// TODO
+		postService.applyTask(task);
 		return task.getId();
 	}
 	
