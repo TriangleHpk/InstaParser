@@ -29,8 +29,8 @@ public class TaskController {
 	 * Controller returns Response if task created and saved
 	 */
 	@PostMapping(value = "/task/create")
-	public ObjectId createTask(@RequestBody Task task) {
-		return taskService.createTask(task);
+	public String createTask(@RequestBody Task task) {
+		return taskService.createTask(task).toHexString();
 	}
 
 }

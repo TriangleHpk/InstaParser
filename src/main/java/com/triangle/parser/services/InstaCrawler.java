@@ -5,8 +5,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimeZone;
+import java.util.concurrent.CompletableFuture;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -23,11 +24,18 @@ public class InstaCrawler implements ICrawler {
 	
 	private RestTemplate restTemplate = new RestTemplate();
 
+	/**
+	 * Parses posts from Instagram. Returns list of parsed posts by hashtag and count
+	 */
 	@Override
 	public List<Post> getPosts(String hashtag, int count) {
-		List<Post> posts = new ArrayList<>();
 		String data = restTemplate.getForEntity(String.format(URL, hashtag), String.class).getBody();
-		JsonElement main = new JsonParser().parse(data);
+		return parse(data, count);
+	}
+	
+	public List<Post> parse(String json, int count){
+		List<Post> posts = new ArrayList<>();
+		JsonElement main = new JsonParser().parse(json);
 		JsonObject graphql = main.getAsJsonObject().getAsJsonObject("graphql");
 		JsonObject hashtagEl = graphql.getAsJsonObject("hashtag");
 		JsonObject edgeAllPosts = hashtagEl.getAsJsonObject("edge_hashtag_to_media");
@@ -59,7 +67,6 @@ public class InstaCrawler implements ICrawler {
 			post.setImageUrl(image);
 			posts.add(post);
 		}
-		
 		return posts;
 	}
 	
