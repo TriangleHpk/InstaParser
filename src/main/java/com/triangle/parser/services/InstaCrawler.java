@@ -29,9 +29,13 @@ public class InstaCrawler implements ICrawler {
 	 */
 	@Override
 	public List<Post> getPosts(String hashtag, int count) {
-		List<Post> posts = new ArrayList<>();
 		String data = restTemplate.getForEntity(String.format(URL, hashtag), String.class).getBody();
-		JsonElement main = new JsonParser().parse(data);
+		return parse(data, count);
+	}
+	
+	public List<Post> parse(String json, int count){
+		List<Post> posts = new ArrayList<>();
+		JsonElement main = new JsonParser().parse(json);
 		JsonObject graphql = main.getAsJsonObject().getAsJsonObject("graphql");
 		JsonObject hashtagEl = graphql.getAsJsonObject("hashtag");
 		JsonObject edgeAllPosts = hashtagEl.getAsJsonObject("edge_hashtag_to_media");
@@ -63,7 +67,6 @@ public class InstaCrawler implements ICrawler {
 			post.setImageUrl(image);
 			posts.add(post);
 		}
-		
 		return posts;
 	}
 	
