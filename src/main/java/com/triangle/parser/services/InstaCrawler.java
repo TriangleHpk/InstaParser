@@ -5,8 +5,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimeZone;
+import java.util.concurrent.CompletableFuture;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -23,6 +24,9 @@ public class InstaCrawler implements ICrawler {
 	
 	private RestTemplate restTemplate = new RestTemplate();
 
+	/**
+	 * Parses posts from Instagram. Returns list of parsed posts by hashtag and count
+	 */
 	@Override
 	public List<Post> getPosts(String hashtag, int count) {
 		List<Post> posts = new ArrayList<>();
