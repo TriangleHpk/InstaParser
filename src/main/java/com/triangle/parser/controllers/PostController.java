@@ -1,13 +1,9 @@
 package com.triangle.parser.controllers;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.social.twitter.api.Entities;
-import org.springframework.social.twitter.api.HashTagEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;

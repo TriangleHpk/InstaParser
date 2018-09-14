@@ -1,7 +1,5 @@
 package com.triangle.parser.services;
 
-import java.util.ArrayList;
-
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
