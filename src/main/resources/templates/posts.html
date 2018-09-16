@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <title>DeluxHotel - Reservation Page 2 - Responsive Bootstrap 4 Template For Hotels</title>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+  <link rel="shortcut icon" href="assets/images/favicon/favicon.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <script>
+    $(document).ready(function() {
+    $.ajax({
+        url: "http://localhost:8080/posts/123"
+    }).then(function(data) {
+      while(data.read())
+      {
+        var div3 = document.createElement("div3");
+        div3.innerHTML+="<p"
+      }
+       $('.greeting-id').append(data.taskId);
+       $('.greeting-text').append(data.text);
+       $('.greeting-shortCode').append(data.shortCode);
+       $('.greeting-like').append(data.likesCount);
+       $('.greeting-img').append(data.imageUrl);
+       $('.greeting-date').append(data.date);
+    });
+});
+  </script>
+</head>
+<body>
+  <!-- main wrapper -->
+  <div class="wrapper">
+    <!-- header -->
+    <header class="header">
+      <div class="header-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+              <div class="header-location"><i class="fa fa-home"></i> <a href="#">455 Martinson, Los Angeles</a></div>
+              <div class="header-email"><i class="fa fa-envelope-o"></i> <a href="mailto:support@email.com">support@email.com</a></div>
+              <div class="header-phone"><i class="fa fa-phone"></i> <a href="#">8 (043) 567 - 89 - 30</a></div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+              <div class="header-social pull-right">
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+                <a href="#"><i class="fa fa-dribbble"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <nav class="navbar navbar-universal navbar-custom">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="logo"><a href="index.html" class="navbar-brand page-scroll"><img src="assets/images/logo/logo.png" alt="logo"/></a></div>
+              </div>
+              <div class="col-lg-9">
+                <div class="navbar-header">
+                  <button type="button" data-toggle="collapse" data-target=".navbar-main-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                </div>
+                <div class="collapse navbar-collapse navbar-main-collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pages <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="contacts.html">Contacts</a></li>
+                        <li><a href="faq.html">F.A.Q</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="404.html">404 Page Not Found</a></li>
+                      </ul>
+                    </li>
+                    <li class="active"><a href="wizzard-step1.html">Reservation</a></li>
+                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Rooms <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="best-rooms.html">All Rooms</a></li>
+                        <li><a href="best-rooms-detail.html">Room Detail</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Blog <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="blog.html">All Posts</a></li>
+                        <li><a href="blog-detail.html">Post Detail</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Purchase</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- /header -->
+    <!-- breadcrumbs -->
+    <!-- /breadcrumbs -->
+    <!-- reservation wizzard steps-->
+    <div class="wizzard reservation-1">
+
+      <div class="container reservation-1">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="wizzard-list">
+              <h3 class="h3">Available rooms on specified date</h3>
+              <div class="row best-room_ul">
+                <div class="col-md-12 col-sm-12 col-xs-12 best-room_li">
+                  <div class="best-room_img">
+                    <img src="assets/images/best-rooms/1.jpg" alt=""/>
+                  </div>
+                  <div class="best-room-info">
+                    <div class="best-room_t"><a href="best-rooms-detail.html">Grand super LUX</a></div>
+                    <div class="best-room_desc">Mr do raising article general norland my hastily. Its companions say uncommonly pianoforte favourable. Education affection consulted by mr attending he therefore.</div>
+                    <div class="best-room_price">
+                      <span>$49</span> / night
+                    </div>
+                    <div class="wizzard_footer">
+                      <div class="footer_el __bed"><i class="fa fa-bed"></i> 2</div>
+                      <div class="footer_el __ppl"><i class="fa fa-user"></i> 4</div>
+                      <div class="footer_el __wifi">Free WiFi</div>
+                      <div class="footer_el __area">60 sqm</div>
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
+                </div><!-- ---- ---- --- -->
+                
+              </ul>
+             <!--  <nav class="text-center">
+                <ul class="pagination">
+                  <li><a href="#" class="active">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">5</a></li>
+                  <li><a href="#">&raquo;</a></li>
+                </ul>
+              </nav> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /reservation wizzard steps-->
+  <!-- footer -->
+  <footer class="footer">
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="footer-bottom_copy">Copyright © 2016 DeluxHotel. Design by <a href="https://themeforest.net/user/Dankov" target="_blank">Dankov</a></div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="footer-bottom_links">
+              <a class="active" href="index.html">Home</a>
+              <a href="gallery.html">Gallery</a>
+              <a href="blog.html">Blog</a>
+              <a href="wizzard-step1.html">Reservation</a>
+              <a href="#">Purchase</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+  <!-- /footer -->
+  <!-- Scripts -->
+  <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/js/tether.min.js"></script>
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="assets/js/moment.min.js"></script>
+  <script type="text/javascript" src="assets/js/jquery.smartmenus.js"></script>
+  <script type="text/javascript" src="assets/js/jquery.parallax.min.js"></script>
+  <script type="text/javascript" src="assets/js/jquery.shuffle.min.js"></script>
+  <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
+  <script type="text/javascript" src="assets/js/main.js"></script>
+  <!-- /Scripts -->
+</body>
+</html>
