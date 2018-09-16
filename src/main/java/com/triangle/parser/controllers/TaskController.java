@@ -20,7 +20,7 @@ public class TaskController {
 	/*
 	 * Controller returns Posts saved into DB
 	 */
-	@GetMapping(value = "/task/{id}")
+	@GetMapping(value = "/api/task/{id}")
 	private Task getTaskById(@PathVariable ObjectId id) {
 		return taskService.getTaskById(id);
 	}
@@ -28,7 +28,7 @@ public class TaskController {
 	/*
 	 * Controller returns Response if task created and saved
 	 */
-	@PostMapping(value = "/task/create")
+	@PostMapping(value = "/api/task/create")
 	public String createTask(@RequestBody Task task) {
 		return taskService.createTask(task).toHexString();
 	}
