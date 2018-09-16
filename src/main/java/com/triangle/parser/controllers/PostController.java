@@ -24,7 +24,7 @@ public class PostController {
 	 * @param id  task id - ObjectId
 	 * @return    post list
 	 */
-	@GetMapping(value = "/posts/{id}")
+	@GetMapping(value = "/api/posts/{id}")
 	private List<Post> getPostByTaskId(@PathVariable ObjectId id) {
 		
 		return postService.findByTaskId(id);
