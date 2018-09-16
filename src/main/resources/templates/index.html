@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>DeluxHotel - Responsive Bootstrap 4 Template For Hotels</title>
+<!--   <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <title>InstaParser</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="assets/images/favicon/favicon.png">
   <link rel="stylesheet" href="assets/css/style.css">
@@ -12,39 +12,27 @@
   <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.13.0/dojo/dojo.js"></script>
   <script>
 
-  
-    var obj = $('form').serializeJSON();
-    var jsonString = JSON.stringfy(obj);
-    alert(jsonString)
-
-    $('form').submit(function(){
-
-    var obj = $('form').serializeJSON();
-
-    // $.ajax({
-    //     type: 'POST',
-    //     url: '',
-    //     dataType: 'json',
-    //     data: JSON.stringify(obj),
-    //     contentType : 'application/json',
-    //     success: function(data) {
-    //         alert(data)
-    //     }
-    // });
-    var heshtag=document.getElementById("hesh").value;
-    var heshtag=document.getElementById("lim").value;
-    var obj = { hashtags: "summer", postCount: 30};
+    function send_data()
+    {
+      var heshtag=document.getElementById("hesh").value;
+    var limit=document.getElementById("lim").value;
+    var mas=["summer","summer_time"];
+    var obj = { hashtags: mas, postCount: 5};
     
     $.ajax({
     url: 'http://localhost:8080/task/create',
     type: 'POST',
-    data: JSON.stringify(obj),
+    contentType:'application/json',
     dataType: 'json',
-    success: function(data)
+    data: JSON.stringify(obj),
+    success: function()
            {
-               alert(data); // show response from the php script.
+               //alert("Hello"); // show response from the php script.
+               document.getElementById("h_2").innerHTML ="It works!";
+               
            }
 });
+   }
 
   </script>
 </head>
@@ -118,15 +106,15 @@
         </nav>
       </div>
     </header>
-    <!-- /header -->
-    <!-- parallax -->
+    <!-- /header
+     parallax -->
       <section class="bg-parallax parallax-window">
         <div class="overlay"></div>
         <div class="container">
           <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="parallax-text">
-                <h2 class="parallax_t __white" align="center">FIND YOUR #HASHTAG IN INSTAGRAM</h2>
+                <h2 id="h_2" class="parallax_t __white" align="center">FIND YOUR #HASHTAG IN INSTAGRAM</h2>
                 <br>
                 <br>
                 <br>
@@ -146,13 +134,13 @@
                         </div>
                       </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                      <div class="form-group" class="form-control">
+                     <!--  <div class="form-group" class="form-control"> -->
                           <label>LIMIT</label>
                           <div class="theme-select">
                             <input type="text" id="lim" class="form-control __plannerSelect">
                             </input>
                           </div>
-                        </div>
+                       <!--  </div> -->
                       </div>
                 </div>
                   <div class="row">
@@ -160,7 +148,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <div class="planner-check-availability">
                       <input type="button" id="enter" value="ввести">
-                         <a href="posts.php" id="enter" class="btn btn-default">FIND</a>
+                         <a href="posts.html" id="enter" class="btn btn-default">FIND</a>
                       </div>
                     </div>
                   </div>
@@ -281,7 +269,7 @@
   <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
   <script type="text/javascript" src="assets/js/map.js"></script>
-  <script type="text/javascript" src="assets/js/main.js"></script>
+  <script type="text/javascript" src="assets/js/main.js"></script> -->
   <!-- /Scripts -->
 </body>
 </html>
