@@ -8,24 +8,27 @@
   <link rel="shortcut icon" href="assets/images/favicon/favicon.png">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
-<!--   <script>
+  <script>
     $(document).ready(function() {
     $.ajax({
-        url: ""
-    }).then(function(data) {
-      while(data.read())
-      {
+        url: "http://localhost:8080/api/posts/123"
+    })
+    .then(function(data) {
+      // while(data.read())
+      // {
+      //   var div3 = document.createElement("div3");
+      //   div3.innerHTML+="<p>"+
+      // }
+       // $('.greeting-id').append(data.taskId);
+       // $('.greeting-text').append(data.text);
+       // $('.greeting-shortCode').append(data.shortCode);
+       // $('.greeting-like').append(data.likesCount);
+       // $('.greeting-img').append(data.imageUrl);
+       // $('.greeting-date').append(data.date);
 
-      }
-       $('.greeting-id').append(data.taskId);
-       $('.greeting-text').append(data.text);
-       $('.greeting-shortCode').append(data.shortCode);
-       $('.greeting-like').append(data.likesCount);
-       $('.greeting-img').append(data.imageUrl);
-       $('.greeting-date').append(data.date);
     });
 });
-  </script> -->
+  </script>
 </head>
 <body>
   <!-- main wrapper -->
@@ -109,7 +112,7 @@
             <div class="wizzard-list">
               <h3 class="h3">Available rooms on specified date</h3>
               <div class="row best-room_ul">
-                <li class="col-md-12 col-sm-12 col-xs-12 best-room_li">
+                <div class="col-md-12 col-sm-12 col-xs-12 best-room_li">
                   <div class="best-room_img">
                     <img src="assets/images/best-rooms/1.jpg" alt=""/>
                   </div>
@@ -127,7 +130,7 @@
                       <div class="clearfix"></div>
                     </div>
                   </div>
-                </li><!-- ---- ---- --- -->
+                </div><!-- ---- ---- --- -->
                 
               </ul>
              <!--  <nav class="text-center">

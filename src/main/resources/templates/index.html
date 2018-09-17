@@ -11,7 +11,11 @@
   <script type="text/javascript" src="assets/js/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.13.0/dojo/dojo.js"></script>
   <script>
-
+    function secesful()
+    {
+    //var data_=data;
+    alert("hello");
+    }
     function send_data()
     {
       var heshtag=document.getElementById("hesh").value;
@@ -20,19 +24,25 @@
     var obj = { hashtags: mas, postCount: 5};
     
     $.ajax({
-    url: 'http://localhost:8080/task/create',
+    url: 'http://localhost:8080/api/task/create',
     type: 'POST',
     contentType:'application/json',
     dataType: 'json',
     data: JSON.stringify(obj),
-    success: function()
-           {
-               //alert("Hello"); // show response from the php script.
-               document.getElementById("h_2").innerHTML ="It works!";
+    success: secesful()
+   //  function(data)
+   //         {
+   //          //$("#h_2").text(JSON.parse(data);
+   //           //var str=JSON.parse(data);
+   // //   document.getElementById("h_2").innerHTML =str;
+   //             alert("Hello"); // show response from the php script.
+   //             //document.getElementById("h_2").innerHTML ="It works!";
                
-           }
+   //         }
 });
-   }
+    
+    
+   };
 
   </script>
 </head>
