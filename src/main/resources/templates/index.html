@@ -11,8 +11,9 @@
   <script type="text/javascript" src="assets/js/jquery.min.js"></script>
  <!--  <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.13.0/dojo/dojo.js"></script> -->
   <script>
+
     function get(id){return document.getElementById(id)}
-$(document).ready(function(){
+    function send_data(){
    var mas=["summer","summer_time"];
    var obj = { hashtags: mas, postCount: 5};
   $.ajax({
@@ -27,8 +28,7 @@ $(document).ready(function(){
     div3.innerHTML +="<a href="+link+" class="+"btn btn-default"+">FIND</a>";
     document.getElementById("show_find").appendChild(div3);
   });
-}
-  );
+};
   </script>
 </head>
 <body>
@@ -36,26 +36,6 @@ $(document).ready(function(){
   <div class="wrapper">
     <!-- header -->
     <header class="header">
-      <div class="header-top">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
-              <div class="header-location"><i class="fa fa-home"></i> <a href="#">455 Martinson, Los Angeles</a></div>
-              <div class="header-email"><i class="fa fa-envelope-o"></i> <a href="mailto:support@email.com">support@email.com</a></div>
-              <div class="header-phone"><i class="fa fa-phone"></i> <a href="#">8 (043) 567 - 89 - 30</a></div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-              <div class="header-social pull-right">
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-google-plus"></i></a>
-                <a href="#"><i class="fa fa-dribbble"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="header-bottom">
         <nav class="navbar navbar-universal navbar-custom">
           <div class="container">
@@ -104,6 +84,7 @@ $(document).ready(function(){
     <!-- /header
      parallax -->
       <section class="bg-parallax parallax-window">
+        <img src="main2.png">
         <div class="overlay"></div>
         <div class="container">
           <div class="row">
@@ -258,13 +239,13 @@ $(document).ready(function(){
   <!-- <script type="text/javascript" src="assets/js/tether.min.js"></script> -->
   <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="assets/js/jquery-ui.min.js"></script>
-  <script type="text/javascript" src="assets/js/moment.min.js"></script>
+ <!--  <script type="text/javascript" src="assets/js/moment.min.js"></script>
   <script type="text/javascript" src="assets/js/jquery.smartmenus.js"></script>
   <script type="text/javascript" src="assets/js/jquery.parallax.min.js"></script>
   <script type="text/javascript" src="assets/js/jquery.shuffle.min.js"></script>
-  <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
+  <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script> -->
  <!--  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script> -->
-  <script type="text/javascript" src="assets/js/map.js"></script>
+<!--   <script type="text/javascript" src="assets/js/map.js"></script>
   <script type="text/javascript" src="assets/js/main.js"></script> -->
   <!-- /Scripts -->
 </body>
