@@ -5,15 +5,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>DeluxHotel - Reservation Page 2 - Responsive Bootstrap 4 Template For Hotels</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="shortcut icon" href="assets/images/favicon/favicon.png">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="shortcut icon" th:href="@{/assets/images/favicon/favicon.png}">
+  <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
+  <script type="text/javascript" th:src="@{/assets/js/jquery.min.js}"></script>
+  <script type="text/javascript" th:src="@{/assets/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{/assets/js/jquery-ui.min.js}"></script>
   <script>
-    function get(id){return document.getElementById(id)}
+    // function get(id){return document.getElementById(id)}
+    // $(document).ready(function(){
+    //     alert("hello")
+    // }
+    //   )
     $(document).ready(function(){
-        alert("hello")
-    }
-      )
+      var task_ID=window.location.pathname.split("/");
+      $.ajax({
+        url:"http://localhost:8080/api/posts/"+task_ID[2],
+        dataType:"json"
+      }).then(function(data){
+        // alert(data.shortCode[0]);
+        console.log("hello");
+        console.log(data);
+      });
+      // alert(task_ID[2]);
+
+    })
   </script>
 </head>
 <body>
@@ -26,7 +42,7 @@
           <div class="container">
             <div class="row">
               <div class="col-lg-3">
-                <div class="logo"><a href="index.html" class="navbar-brand page-scroll"><img src="assets/images/logo/logo.png" alt="logo"/></a></div>
+                <div class="logo"><a href="index.html" class="navbar-brand page-scroll"><img th:src="@{/assets/images/logo/logo.png}" alt="logo"/></a></div>
               </div>
               <div class="col-lg-9">
                 <div class="navbar-header">
@@ -78,7 +94,7 @@
             <div class="wizzard-list">
               <h3 class="h3">Available rooms on specified date</h3>
               <div class="row best-room_ul">
-                <div class="col-md-12 col-sm-12 col-xs-12 best-room_li">
+                <div class="col-md-12 col-sm-12 col-xs-12 best-room_li"><!-- ---- ---- --- -->
                   <div class="best-room_img">
                     <img src="assets/images/best-rooms/1.jpg" alt=""/>
                   </div>
@@ -139,7 +155,10 @@
 </div>
   <!-- /footer -->
   <!-- Scripts -->
-  <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+   <!--  <script type="text/javascript" th:src="@{/assets/js/jquery.min.js}"></script>
+  <script type="text/javascript" th:src="@{/assets/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{/assets/js/jquery-ui.min.js}"></script> -->
+<!--   <script type="text/javascript" src="assets/js/jquery.min.js"></script>
   <script type="text/javascript" src="assets/js/tether.min.js"></script>
   <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="assets/js/jquery-ui.min.js"></script>
@@ -148,7 +167,7 @@
   <script type="text/javascript" src="assets/js/jquery.parallax.min.js"></script>
   <script type="text/javascript" src="assets/js/jquery.shuffle.min.js"></script>
   <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
-  <script type="text/javascript" src="assets/js/main.js"></script>
+  <script type="text/javascript" src="assets/js/main.js"></script> -->
   <!-- /Scripts -->
 </body>
 </html>

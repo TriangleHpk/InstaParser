@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--   <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
   <title>InstaParser</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="shortcut icon" href="assets/images/favicon/favicon.png">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
-  <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+ <!--  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+  <link rel="shortcut icon" th:href="@{/assets/images/favicon/favicon.png}">
+  <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
+  <script type="text/javascript" th:src="@{/assets/js/jquery.min.js}"></script>
+  <script type="text/javascript" th:src="@{/assets/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{/assets/js/jquery-ui.min.js}"></script>
  <!--  <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.13.0/dojo/dojo.js"></script> -->
   <script>
 
@@ -16,7 +18,7 @@
     function send_data(){
    var mas=["summer","summer_time"];
    var obj = { hashtags: mas, postCount: 5};
-  $.ajax({
+    $.ajax({
      url: 'http://localhost:8080/api/task/create',
      type: 'POST',
      contentType:'application/json',
@@ -41,7 +43,7 @@
           <div class="container">
             <div class="row">
               <div class="col-lg-3">
-                <div class="logo"><a href="index.html" class="navbar-brand page-scroll"><img src="assets/images/logo/logo.png" alt="logo"/></a></div>
+                <div class="logo"><a href="index.html" class="navbar-brand page-scroll"><img th:src="@{/assets/images/logo/logo.png}" alt="logo"/></a></div>
               </div>
               <div class="col-lg-9">
                 <div class="navbar-header">
@@ -84,7 +86,7 @@
     <!-- /header
      parallax -->
       <section class="bg-parallax parallax-window">
-        <img src="main2.png">
+        <!-- <img th:src="@{/assets/images/about/3.jpg}"> -->
         <div class="overlay"></div>
         <div class="container">
           <div class="row">
@@ -235,10 +237,8 @@
 </div>
   <!-- /footer -->
   <!-- Scripts -->
-  <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+  <!-- <script type="text/javascript" th:src="@{/assets/js/jquery.min.js}"></script> -->
   <!-- <script type="text/javascript" src="assets/js/tether.min.js"></script> -->
-  <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="assets/js/jquery-ui.min.js"></script>
  <!--  <script type="text/javascript" src="assets/js/moment.min.js"></script>
   <script type="text/javascript" src="assets/js/jquery.smartmenus.js"></script>
   <script type="text/javascript" src="assets/js/jquery.parallax.min.js"></script>
