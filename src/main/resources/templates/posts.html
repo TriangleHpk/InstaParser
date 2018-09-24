@@ -20,6 +20,7 @@
     $(document).ready(function(){
       var task_ID=window.location.pathname.split("/");
       $.ajax({
+    	type: 'GET',
         url:"http://localhost:8080/api/posts/"+task_ID[2],
         dataType:"json"
       }).then(function(data){
