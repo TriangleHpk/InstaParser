@@ -880,7 +880,7 @@ section, .section {
 }
 
 .best-room_img {
-  position: relative;
+  position: center;
 }
 .best-room_img::after {
   content: '';
