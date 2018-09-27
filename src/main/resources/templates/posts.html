@@ -12,11 +12,6 @@
   <script type="text/javascript" th:src="@{/assets/js/bootstrap.min.js}"></script>
   <script type="text/javascript" th:src="@{/assets/js/jquery-ui.min.js}"></script>
   <script>
-    // function get(id){return document.getElementById(id)}
-    // $(document).ready(function(){
-    //     alert("hello")
-    // }
-    //   )
     $(document).ready(function(){
       var task_ID=window.location.pathname.split("/");
       $.ajax({
@@ -30,7 +25,7 @@
                 div3.innerHTML+="<div class=col-md-12 col-sm-12 col-xs-12 best-room_li>";
                 div3.innerHTML+="<div class=best-room_img>";
                 div3.innerHTML+="<img src="+data[i].imageUrl+" width=30%></div>";
-                div3.innerHTML+="<div class=best-room-info>";
+                // div3.innerHTML+="<div class=best-room-info>";
                 div3.innerHTML+="<div class=best-room_t><a href=https://instagram.com/p/"+data[i].shortCode+">View post</x`a></div>";
                 div3.innerHTML+="<div class=best-room_desc>"+data[i].text+"</div>";
                 div3.innerHTML+="<div class=wizzard_footer>";
@@ -105,32 +100,7 @@
             <div class="wizzard-list">
               <h3 class="h3">Available rooms on specified date</h3>
               <div class="row best-room_ul" id="rezult">
-               <!--  <div class="col-md-12 col-sm-12 col-xs-12 best-room_li">
-                  <div class="best-room_img">
-                    <img th:src="@{/assets/images/best-rooms/1.jpg}" alt=""/>
-                  </div>
-                  <div class="best-room-info">
-                    <div class="best-room_t"><a href="best-rooms-detail.html">Grand super LUX</a></div>
-                    <div class="best-room_desc"></div>
-                    <div class="wizzard_footer">
-                      <div class="footer_el __bed"><i class="fa fa-bed"></i> 2</div>
-                      <div class="footer_el __ppl"><i class="fa fa-user"></i> 4</div>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
-                </div> -->
-                
               </div>
-             <!--  <nav class="text-center">
-                <ul class="pagination">
-                  <li><a href="#" class="active">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">&raquo;</a></li>
-                </ul>
-              </nav> -->
             </div>
           </div>
         </div>
@@ -161,19 +131,5 @@
 </div>
   <!-- /footer -->
   <!-- Scripts -->
-   <!--  <script type="text/javascript" th:src="@{/assets/js/jquery.min.js}"></script>
-  <script type="text/javascript" th:src="@{/assets/js/bootstrap.min.js}"></script>
-  <script type="text/javascript" th:src="@{/assets/js/jquery-ui.min.js}"></script> -->
-<!--   <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-  <script type="text/javascript" src="assets/js/tether.min.js"></script>
-  <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="assets/js/jquery-ui.min.js"></script>
-  <script type="text/javascript" src="assets/js/moment.min.js"></script>
-  <script type="text/javascript" src="assets/js/jquery.smartmenus.js"></script>
-  <script type="text/javascript" src="assets/js/jquery.parallax.min.js"></script>
-  <script type="text/javascript" src="assets/js/jquery.shuffle.min.js"></script>
-  <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
-  <script type="text/javascript" src="assets/js/main.js"></script> -->
-  <!-- /Scripts -->
 </body>
 </html>
