@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!--   <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <title>InstaParser</title>
+ <!--  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+  <link rel="shortcut icon" th:href="@{/assets/images/favicon/favicon.png}">
+  <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
+  <script type="text/javascript" th:src="@{/assets/js/jquery.min.js}"></script>
+  <script type="text/javascript" th:src="@{/assets/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{/assets/js/jquery-ui.min.js}"></script>
+ <!--  <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.13.0/dojo/dojo.js"></script> -->
+  <script>
+      var cookie_array_hesh = [];
+      var cookie_array_task = [];
+      var check=true;
+      function setcookie(name,value){
+     var date = new Date(new Date().getTime() + 3600 * 31 * 1000);
+        document.cookie = name+" = "+value+";expires=" + date.toUTCString();
+      
+    }
+    function delete_cookie(cookie_name){
+        var cookie_date = new Date ( );  // Текущая дата и время
+        cookie_date.setTime ( cookie_date.getTime() - 1 );
+        document.cookie = cookie_name += "=; expires=" + cookie_date.toGMTString();
+    }
+    function delete_all_cookies(){
+       delete_cookie('hashtags');
+       delete_cookie('task_Id');
+    }
+   function getCookie(c_name) {
+    if (document.cookie.length > 0) {
+        c_start = document.cookie.indexOf(c_name + "=");
+        if (c_start != -1) {
+            c_start = c_start + c_name.length + 1;
+            c_end = document.cookie.indexOf(";", c_start);
+            if (c_end == -1) {
+                c_end = document.cookie.length;
+            }
+            return unescape(document.cookie.substring(c_start, c_end));
+        }
+    }
+    return "";
+}
+    $(document).ready(function(){
+      $("#h_3").hide();
+          if(getCookie('hashtags')==""){
+            alert("hello");
+          }
+          else{
+            var show_in_list = JSON.parse(getCookie('hashtags'));
+            var show_in_list2 = JSON.parse(getCookie('task_Id'));
+            cookie_array_hesh=show_in_list;
+            cookie_array_task=show_in_list2;
+              for(var i = 0;i<show_in_list.length;i++){
+              var div4 = document.createElement("div4");
+              div4.innerHTML +="<li><a href="+show_in_list2[i]+">"+show_in_list[i]+"</a></li>";
+              document.getElementById("list").appendChild(div4);
+          } 
+          }
+
+    })
+    function get(id){return document.getElementById(id)}
+    function getVal(id){return Number(get(id).value)}
+    function send_data(){
+   // var for_removing=getElementById("show_find");
+   // for_removing.removeChild(for_removing);
+   var mas = get("hesh").value.split(" ");
+   var class_btn="btn-default";
+   var count =getVal("lim");
+   var obj = { hashtags: mas, postCount: count};
+   // if(for_removing!=undefined){
+   //    for_removing.removeChild(for_removing);
+   // }
+    $.ajax({
+     url: 'http://localhost:8080/api/task/create',
+     type: 'POST',
+     contentType:'application/json',
+     beforeSend: function(){
+      // var div5 = document.createElement("div5");
+      //     div5.innerHTML +="<H3 align=center>Yoy request is loading. Please wait</H3>";
+      //     document.getElementById("h_3").appendChild(div5);
+      $("#h_3").show();
+     },
+     data: JSON.stringify(obj)
+  }).then(function(data){
+    $("#h_3").hide();
+    if(mas=="" || count==""){
+      alert("error");}
+      else{
+        if(check==false)
+        {
+          alert("hello");
+           var for_removing=getElementByTagName("div3");
+           for_removing.removeChild(for_removing);
+           check=true;
+        }
+        else{
+          var link_id=data;
+          var div3 = document.createElement("div3");
+          var link="/posts/"+link_id;
+          div3.innerHTML +="<a href="+link+" class="+class_btn+">FIND</a>";
+          document.getElementById("show_find").appendChild(div3);
+          check=false;
+          cookie_array_hesh.push(get("hesh").value);
+          cookie_array_task.push(link);
+          setcookie('hashtags',JSON.stringify(cookie_array_hesh));
+          setcookie('task_Id',JSON.stringify(cookie_array_task));
+          }
+      }
+    
+  });
+};
+  </script>
+</head>
+<body>
+  <!-- main wrapper -->
+  <div class="wrapper">
+    <!-- header -->
+    <header class="header">
+      <div class="header-bottom">
+          <h1 class="main_title">#InstaParser</h1>
+      </div>
+    </header>
+    <!-- /header
+     parallax -->
+      <section class="bg-parallax parallax-window">
+        <div class="overlay">
+          <!-- <img th:src="@{/assets/images/about/3.jpg}" height="auto" width="100%"> -->
+        </div>
+        <div class="container">
+          
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="parallax-text">
+                <h2 id="h_2" class="parallax_t __white" align="center">FIND YOUR #HASHTAG IN INSTAGRAM</h2>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              </div>
+            </div>
+            <!-- planner-->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 planner">
+              <div class="planner-block">
+             <!--    <form class="form-planner form-horizontal"  id="login-form" action="" method="post"> -->
+                  <div class="row">
+                  <div class="col-lg-9 col-md-6 col-sm-6 col-xs-12">
+                      <div class="form-group">
+                          <label>Enter #HASHTAG (exampl" summer travel...)</label>
+                          <input type="text" id="hesh" class="form-control"/>
+                        </div>
+                      </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                     <!--  <div class="form-group" class="form-control"> -->
+                          <label>LIMIT(number for each hashtag)</label>
+                          <div class="theme-select">
+                            <input type="text" id="lim" class="form-control __plannerSelect">
+                            </input>
+                          </div>
+                       <!--  </div> -->
+                      </div>
+                </div>
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <div class="planner-check-availability">
+                      <div onclick="send_data()" class="btn btn-default" id="enter">View Hashtags</div>
+                      <!-- <div onclick="delete_all_cookies()" class="btn btn-default">Delete</div> -->
+                      <div id="show_find">
+                        <br>
+                        <br>
+                         </div> 
+                        
+                    </div>
+                  </div>
+                  <div >
+                    <H3  id="h_3" align=center>Yoy request is loading. Please wait</H3>
+                  </div>
+                  <div class="row">
+                    <H1 id="text_h1_">Previosly you search:</H1>
+                      <ul id="list">
+                        
+                      </ul>
+                  </div>
+<!--                 </form> -->
+              </div>
+            </div>
+            <!-- /planner-->
+          </div>
+        </div>
+
+    </section>
+    <!-- /parallax -->
+    <!-- chose best rooms -->
+  
+    <!-- /map -->
+  <!-- /main wrapper -->
+  <!-- footer -->
+  <footer class="footer">
+
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="footer-bottom_copy">Copyright © 2016 DeluxHotel. Design by <a href="https://themeforest.net/user/Dankov" target="_blank">Dankov</a></div>
+          </div>
+          <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="footer-bottom_links">
+              <a class="active" href="index.html">Home</a>
+              <a href="gallery.html">Gallery</a>
+              <a href="blog.html">Blog</a>
+              <a href="wizzard-step1.html">Reservation</a>
+              <a href="#">Purchase</a>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+  <!-- /footer -->
+  <!-- Scripts -->
+  <!-- /Scripts -->
+</body>
+</html>
