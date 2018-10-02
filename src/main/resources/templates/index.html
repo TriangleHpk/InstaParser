@@ -65,53 +65,45 @@
     function get(id){return document.getElementById(id)}
     function getVal(id){return Number(get(id).value)}
     function send_data(){
-   // var for_removing=getElementById("show_find");
-   // for_removing.removeChild(for_removing);
-   var mas = get("hesh").value.split(" ");
-   var class_btn="btn-default";
-   var count =getVal("lim");
-   var obj = { hashtags: mas, postCount: count};
-   // if(for_removing!=undefined){
-   //    for_removing.removeChild(for_removing);
-   // }
-    $.ajax({
-     url: 'http://localhost:8080/api/task/create',
-     type: 'POST',
-     contentType:'application/json',
-     beforeSend: function(){
-      // var div5 = document.createElement("div5");
-      //     div5.innerHTML +="<H3 align=center>Yoy request is loading. Please wait</H3>";
-      //     document.getElementById("h_3").appendChild(div5);
-      $("#h_3").show();
-     },
-     data: JSON.stringify(obj)
-  }).then(function(data){
-    $("#h_3").hide();
+    var mas = get("hesh").value.split(" ");
+    var class_btn="btn-default";
+    var count =getVal("lim");
+    var obj = { hashtags: mas, postCount: count};
+    var for_removing;
     if(mas=="" || count==""){
       alert("error");}
       else{
         if(check==false)
         {
-          alert("hello");
-           var for_removing=getElementByTagName("div3");
-           for_removing.removeChild(for_removing);
+           for_removing=get("find_");
+           for_removing.parentNode.removeChild(for_removing);
            check=true;
         }
-        else{
-          var link_id=data;
-          var div3 = document.createElement("div3");
-          var link="/posts/"+link_id;
-          div3.innerHTML +="<a href="+link+" class="+class_btn+">FIND</a>";
-          document.getElementById("show_find").appendChild(div3);
-          check=false;
-          cookie_array_hesh.push(get("hesh").value);
-          cookie_array_task.push(link);
-          setcookie('hashtags',JSON.stringify(cookie_array_hesh));
-          setcookie('task_Id',JSON.stringify(cookie_array_task));
-          }
-      }
-    
+              $.ajax({
+              url: 'http://localhost:8080/api/task/create',
+              type: 'POST',
+              contentType:'application/json',
+              beforeSend: function()
+              {
+                 $("#h_3").show();
+              },
+            data: JSON.stringify(obj)
+            }).then(function(data){
+               $("#h_3").hide();
+               var link_id=data;
+               var div3 = document.createElement("div");
+               div3.setAttribute("id", "find_");
+               var link="/posts/"+link_id;
+               div3.innerHTML +="<a href="+link+" class="+class_btn+">FIND</a>";
+               document.getElementById("show_find").appendChild(div3);
+               check=false;
+               cookie_array_hesh.push(get("hesh").value);
+               cookie_array_task.push(link);
+               setcookie('hashtags',JSON.stringify(cookie_array_hesh));
+               setcookie('task_Id',JSON.stringify(cookie_array_task));  
   });
+        
+      }
 };
   </script>
 </head>
@@ -158,7 +150,7 @@
                      <!--  <div class="form-group" class="form-control"> -->
                           <label>LIMIT(number for each hashtag)</label>
                           <div class="theme-select">
-                            <input type="text" id="lim" class="form-control __plannerSelect">
+                            <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' id="lim" class="form-control __plannerSelect">
                             </input>
                           </div>
                        <!--  </div> -->

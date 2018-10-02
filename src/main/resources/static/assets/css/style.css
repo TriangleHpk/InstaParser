@@ -103,7 +103,7 @@ a:focus {
 }
 p {
   color: #444;
-  font-size: 30px;
+  font-size: 18px;
 }
 hr {
   border-top: 4px solid #eee;
@@ -210,7 +210,7 @@ hr {
   padding: 0;
 }
 .caret {
-  color: #9CCC65;
+  color: #9CCC66;
 }
 /**
 * Controls styles
