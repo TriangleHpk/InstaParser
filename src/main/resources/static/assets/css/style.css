@@ -59,12 +59,22 @@ Table of contents
 body {
   background-color: #fff;
 }
+.container2{margin-left:auto;margin-right:auto;padding-left:15px;padding-right:15px}
+.container2::after{content:"";display:table;clear:both}
+@media (min-width:576px)
+{.container2{width:90%;max-width:100%}}
+@media (min-width:768px)
+{.container2{width:70%;max-width:100%}}
+@media (min-width:992px)
+{.container2{width:60%;max-width:100%}}
+@media (min-width:1200px)
+{.container2{width:55%;max-width:100%}}
 .best-room-info p{
   font-size: 30px;
 }
 
 #for_img{
- padding-left: 200px; 
+
 }
 #list{
   list-style: square;
@@ -210,7 +220,7 @@ hr {
   padding: 0;
 }
 .caret {
-  color: #9CCC66;
+  color: #9CCC65;
 }
 /**
 * Controls styles
@@ -910,10 +920,11 @@ section, .section {
 }
 .best-room_li {
   margin-bottom: 30px;
+  background-color: #ECECEC;
 }
 
 .best-room_li img{
-  padding-right: 30px;
+  padding-right: 0px;
 }
 
 .best-room-info {
@@ -1062,7 +1073,7 @@ section, .section {
 .best-room_t {
   margin-bottom: 10px;
   text-align: center;
-  background-color: gray;
+  background-color: red;
   font-family: Montserrat;
 }
 .best-room_t a {
