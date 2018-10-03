@@ -26,7 +26,7 @@
          $("#loading").hide();
          data.forEach(function(item,i,data){
            var div3 = document.createElement("div3");
-                div3.innerHTML+="<div class=col-lg-12 col-md-12 col-sm-12 col-xs-12 best-room_li><img id=for_img src="+data[i].imageUrl+" width=80%>;<p class=best-room_t><a href=https://instagram.com/p/"+data[i].shortCode+">View post</a></p><p>"+data[i].text+"</p><p>"+"Like Count:"+data[i].likesCount+"</p><p>"+data[i].date+"<p></div><hr>"
+                div3.innerHTML+="<div class=best-room_li><img id=for_img src="+data[i].imageUrl+" width=100%><p class=best-room_t><a href=https://instagram.com/p/"+data[i].shortCode+">View post</a></p><p>"+data[i].text+"</p><p>"+"Like Count:"+data[i].likesCount+"</p><p>"+data[i].date+"<p><hr></div>";
             document.getElementById("rezult").appendChild(div3);
          })
       });
@@ -42,13 +42,9 @@
           <h1 class="main_title">#InstaParser</h1>
       </div>
     </header>
-    <!-- /header -->
-    <!-- breadcrumbs -->
-    <!-- /breadcrumbs -->
-    <!-- reservation wizzard steps-->
     <div class="wizzard reservation-1">
 
-      <div class="container reservation-1">
+      <div class="container2 Reservation-1">
         <div class="row">
           <div class="col-md-12">
             <div class="wizzard-list">
@@ -56,15 +52,13 @@
               <div id="loading">
               <h3 class="h3_">Please Wait. Data is Loading...</h3>
               </div>
-              <div class="row best-room_ul" id="rezult">
+              <div class="row best-room_ul " id="rezult">
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- /reservation wizzard steps-->
-  <!-- footer -->
   <footer class="footer">
     <div class="footer-bottom">
       <div class="container">
@@ -86,7 +80,5 @@
     </div>
   </footer>
 </div>
-  <!-- /footer -->
-  <!-- Scripts -->
 </body>
 </html>
