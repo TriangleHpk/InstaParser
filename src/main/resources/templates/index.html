@@ -46,10 +46,7 @@
 }
     $(document).ready(function(){
       $("#h_3").hide();
-          if(getCookie('hashtags')==""){
-            alert("hello");
-          }
-          else{
+          if(getCookie('hashtags') !=""){
             var show_in_list = JSON.parse(getCookie('hashtags'));
             var show_in_list2 = JSON.parse(getCookie('task_Id'));
             cookie_array_hesh=show_in_list;
