@@ -2,16 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-<!--   <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
   <title>InstaParser</title>
- <!--  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
   <link rel="shortcut icon" th:href="@{/assets/images/favicon/favicon.png}">
   <link rel="stylesheet" th:href="@{/assets/css/style.css}">
   <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
   <script type="text/javascript" th:src="@{/assets/js/jquery.min.js}"></script>
   <script type="text/javascript" th:src="@{/assets/js/bootstrap.min.js}"></script>
   <script type="text/javascript" th:src="@{/assets/js/jquery-ui.min.js}"></script>
- <!--  <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.13.0/dojo/dojo.js"></script> -->
   <script>
       var cookie_array_hesh = [];
       var cookie_array_task = [];
@@ -47,7 +44,6 @@
     $(document).ready(function(){
       $("#h_3").hide();
           if(getCookie('hashtags')==""){
-            alert("hello");
           }
           else{
             var show_in_list = JSON.parse(getCookie('hashtags'));
@@ -108,19 +104,14 @@
   </script>
 </head>
 <body>
-  <!-- main wrapper -->
   <div class="wrapper">
-    <!-- header -->
     <header class="header">
       <div class="header-bottom">
           <h1 class="main_title">#InstaParser</h1>
       </div>
     </header>
-    <!-- /header
-     parallax -->
       <section class="bg-parallax parallax-window">
         <div class="overlay">
-          <!-- <img th:src="@{/assets/images/about/3.jpg}" height="auto" width="100%"> -->
         </div>
         <div class="container">
           
@@ -135,10 +126,8 @@
                 <br>
               </div>
             </div>
-            <!-- planner-->
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 planner">
               <div class="planner-block">
-             <!--    <form class="form-planner form-horizontal"  id="login-form" action="" method="post"> -->
                   <div class="row">
                   <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                       <div class="form-group">
@@ -147,20 +136,17 @@
                         </div>
                       </div>
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
-                     <!--  <div class="form-group" class="form-control"> -->
                           <label>LIMIT(number for each hashtag)</label>
                           <div class="theme-select">
                             <input type="text" maxlength="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57' id="lim" class="form-control __plannerSelect">
                             </input>
                           </div>
-                       <!--  </div> -->
                       </div>
                 </div>
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <div class="planner-check-availability">
                       <div onclick="send_data()" class="btn btn-default" id="enter">View Hashtags</div>
-                      <!-- <div onclick="delete_all_cookies()" class="btn btn-default">Delete</div> -->
                       <div id="show_find">
                         <br>
                         <br>
@@ -185,12 +171,6 @@
         </div>
 
     </section>
-    <!-- /parallax -->
-    <!-- chose best rooms -->
-  
-    <!-- /map -->
-  <!-- /main wrapper -->
-  <!-- footer -->
   <footer class="footer">
 
     <div class="footer-bottom">
@@ -199,22 +179,10 @@
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="footer-bottom_copy">Copyright © 2018 ParserInstagram. Design by <a href="https://themeforest.net/user/Dankov" target="_blank">Triangle Team</a></div>
           </div>
-          <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <div class="footer-bottom_links">
-              <a class="active" href="index.html">Home</a>
-              <a href="gallery.html">Gallery</a>
-              <a href="blog.html">Blog</a>
-              <a href="wizzard-step1.html">Reservation</a>
-              <a href="#">Purchase</a>
-            </div>
-          </div> -->
         </div>
       </div>
     </div>
   </footer>
 </div>
-  <!-- /footer -->
-  <!-- Scripts -->
-  <!-- /Scripts -->
 </body>
 </html>
