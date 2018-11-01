@@ -10,6 +10,61 @@
   <script type="text/javascript" th:src="@{/assets/js/bootstrap.min.js}"></script>
   <script type="text/javascript" th:src="@{/assets/js/jquery-ui.min.js}"></script>
   <script>
+    var i=0;
+    var mas_test_h = ["summer"," "," ","summer","summer"];
+    var mas_test_l = [5,5,0,0,1200];
+    function test_heshtag()
+    {
+      
+      if(i>=6){i=0;}
+      var h = "fdsfds";//mas_test_h[1];
+      var l = "fssdf";//mas_test_l[1];
+      let obj = { hashtags: mas_test_h[i], postCount: mas_test_l[i]};
+      alert(obj.hashtags);
+      alert(obj.postCount);
+      i++;
+    }
+     function send_data_test(obj){
+    var mas = get("hesh").value.split(" ");
+    var class_btn="btn-default";
+    var count =getVal("lim");
+    //var obj = { hashtags: mas, postCount: count};
+    var for_removing;
+    if(mas=="" || count==""){
+      alert("FILL ALL THE FIELDS!!!");}
+      else{
+        if(check==false)
+        {
+           for_removing=get("find_");
+           for_removing.parentNode.removeChild(for_removing);
+           check=true;
+        }
+              $.ajax({
+              url: 'http://localhost:8080/api/task/create',
+              type: 'POST',
+              contentType:'application/json',
+              beforeSend: function()
+              {
+                 $("#h_3").show();
+              },
+            data: JSON.stringify(obj)
+            }).then(function(data){
+               $("#h_3").hide();
+               var link_id=data;
+               var div3 = document.createElement("div");
+               div3.setAttribute("id", "find_");
+               var link="/posts/"+link_id;
+               div3.innerHTML +="<a href="+link+" class="+class_btn+">FIND</a>";
+               document.getElementById("show_find").appendChild(div3);
+               check=false;
+               cookie_array_hesh.push(get("hesh").value);
+               cookie_array_task.push(link);
+               setcookie('hashtags',JSON.stringify(cookie_array_hesh));
+               setcookie('task_Id',JSON.stringify(cookie_array_task));  
+  });
+        
+      }
+};
       var cookie_array_hesh = [];
       var cookie_array_task = [];
       var check=true;
@@ -171,6 +226,12 @@
         </div>
 
     </section>
+    <div id="test_heshtag_bt">
+                      <div onclick="test_heshtag()" class="btn btn-default" id="enter">Test hechteg</div>
+    </div>
+    <div id="test_limit_bt">
+      
+    </div>
   <footer class="footer">
 
     <div class="footer-bottom">
