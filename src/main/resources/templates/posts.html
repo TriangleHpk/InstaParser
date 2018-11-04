@@ -12,6 +12,7 @@
   <script type="text/javascript" th:src="@{/assets/js/bootstrap.min.js}"></script>
   <script type="text/javascript" th:src="@{/assets/js/jquery-ui.min.js}"></script>
   <script>
+
     $(document).ready(function(){
       $("#loading").hide();
       var task_ID=window.location.pathname.split("/");
@@ -24,6 +25,7 @@
         dataType:"json"
       }).then(function(data){
          $("#loading").hide();
+         console.log(data);
          data.forEach(function(item,i,data){
            var div3 = document.createElement("div3");
                 div3.innerHTML+="<div class=best-room_li><img id=for_img src="+data[i].imageUrl+" width=100%><p class=best-room_t><a href=https://instagram.com/p/"+data[i].shortCode+">View post</a></p><p>"+data[i].text+"</p><p>"+"Like Count:"+data[i].likesCount+"</p><p>"+data[i].date+"<p><hr></div>";

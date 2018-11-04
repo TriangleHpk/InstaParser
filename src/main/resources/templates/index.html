@@ -10,6 +10,8 @@
   <script type="text/javascript" th:src="@{/assets/js/bootstrap.min.js}"></script>
   <script type="text/javascript" th:src="@{/assets/js/jquery-ui.min.js}"></script>
   <script>
+        function set_size(){
+    }
     var i=0;
     var mas_test_h = ["summer"," "," ","summer","summer"];
     var mas_test_l = [5,5,0,0,1200];
@@ -17,21 +19,26 @@
     {
       
       if(i>=6){i=0;}
-      var h = "fdsfds";//mas_test_h[1];
-      var l = "fssdf";//mas_test_l[1];
       let obj = { hashtags: mas_test_h[i], postCount: mas_test_l[i]};
-      alert(obj.hashtags);
-      alert(obj.postCount);
+      alert("test "+obj.hashtags+" "+obj.postCount);
       i++;
+      console.clear();
+      send_data_test(obj);
     }
      function send_data_test(obj){
-    var mas = get("hesh").value.split(" ");
+   var mas_= obj.hashtags.split(" ");
     var class_btn="btn-default";
-    var count =getVal("lim");
-    //var obj = { hashtags: mas, postCount: count};
+    var obj_ = { hashtags: mas_, postCount: obj.postCount};
     var for_removing;
-    if(mas=="" || count==""){
+    if(obj.hashtags==" " || obj.postCount==0){
+           check=false;
+           for_removing=get("find_");
+           for_removing.parentNode.removeChild(for_removing);
       alert("FILL ALL THE FIELDS!!!");}
+      if(obj.postCount >50){
+        alert("The bigest number for limit");
+           check=false;
+      }
       else{
         if(check==false)
         {
@@ -47,20 +54,20 @@
               {
                  $("#h_3").show();
               },
-            data: JSON.stringify(obj)
+            data: JSON.stringify(obj_)
             }).then(function(data){
                $("#h_3").hide();
+               console.log(data);
                var link_id=data;
                var div3 = document.createElement("div");
                div3.setAttribute("id", "find_");
                var link="/posts/"+link_id;
                div3.innerHTML +="<a href="+link+" class="+class_btn+">FIND</a>";
                document.getElementById("show_find").appendChild(div3);
-               check=false;
-               cookie_array_hesh.push(get("hesh").value);
-               cookie_array_task.push(link);
-               setcookie('hashtags',JSON.stringify(cookie_array_hesh));
-               setcookie('task_Id',JSON.stringify(cookie_array_task));  
+               check=false; 
+               window.location= "http://localhost:8080/api/posts/"+link_id;
+
+               //location.replace(link);
   });
         
       }
@@ -230,7 +237,12 @@
                       <div onclick="test_heshtag()" class="btn btn-default" id="enter">Test hechteg</div>
     </div>
     <div id="test_limit_bt">
-      
+      <select id="select_size">
+        <option value="1920">1920</option>
+        <option value="1280">1280</option>
+        <option value="700">700</option>
+      </select>
+      <div onclick="set_size()" class="btn-default"></div>
     </div>
   <footer class="footer">
 
