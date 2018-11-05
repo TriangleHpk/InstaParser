@@ -10,15 +10,17 @@
   <script type="text/javascript" th:src="@{/assets/js/bootstrap.min.js}"></script>
   <script type="text/javascript" th:src="@{/assets/js/jquery-ui.min.js}"></script>
   <script>
-        function set_size(){
+    function delete_find(){
+      for_removing=get("find_");
+      for_removing.parentNode.removeChild(for_removing);
     }
     var i=0;
     var mas_test_h = ["summer"," "," ","summer","summer"];
-    var mas_test_l = [5,5,0,0,1200];
+    var mas_test_l = [5,5,0,1000,0];
     function test_heshtag()
     {
       
-      if(i>=6){i=0;}
+      if(i>6){i=0;}
       let obj = { hashtags: mas_test_h[i], postCount: mas_test_l[i]};
       alert("test "+obj.hashtags+" "+obj.postCount);
       i++;
@@ -32,19 +34,27 @@
     var for_removing;
     if(obj.hashtags==" " || obj.postCount==0){
            check=false;
-           for_removing=get("find_");
-           for_removing.parentNode.removeChild(for_removing);
+           if(get("find_") != null){
+            alert("null");
+            delete_find();
+          }
       alert("FILL ALL THE FIELDS!!!");}
-      if(obj.postCount >50){
+      else if(obj.postCount >50){
         alert("The bigest number for limit");
            check=false;
+            if(get("find_") != null){
+            alert("null");
+            delete_find();
+          }
       }
       else{
         if(check==false)
         {
-           for_removing=get("find_");
-           for_removing.parentNode.removeChild(for_removing);
            check=true;
+            if(get("find_") != null){
+            alert("null");
+            delete_find();
+          }
         }
               $.ajax({
               url: 'http://localhost:8080/api/task/create',
@@ -129,13 +139,27 @@
     var obj = { hashtags: mas, postCount: count};
     var for_removing;
     if(mas=="" || count==""){
+           check=false;
+           if(get("find_") != null){
+            delete_find();
+          }
       alert("FILL ALL THE FIELDS!!!");}
+      else if(count >50){
+        alert("The bigest number for limit");
+           check=false;
+            if(get("find_") != null){
+            alert("null");
+            delete_find();
+          }
+      }
       else{
         if(check==false)
         {
-           for_removing=get("find_");
-           for_removing.parentNode.removeChild(for_removing);
            check=true;
+            if(get("find_") != null){
+            alert("null");
+            delete_find();
+          }
         }
               $.ajax({
               url: 'http://localhost:8080/api/task/create',
@@ -147,7 +171,7 @@
               },
             data: JSON.stringify(obj)
             }).then(function(data){
-               $("#h_3").hide();
+              $("#h_3").hide();
                var link_id=data;
                var div3 = document.createElement("div");
                div3.setAttribute("id", "find_");
@@ -158,7 +182,9 @@
                cookie_array_hesh.push(get("hesh").value);
                cookie_array_task.push(link);
                setcookie('hashtags',JSON.stringify(cookie_array_hesh));
-               setcookie('task_Id',JSON.stringify(cookie_array_task));  
+               setcookie('task_Id',JSON.stringify(cookie_array_task)); 
+
+               //location.replace(link);
   });
         
       }
@@ -237,12 +263,6 @@
                       <div onclick="test_heshtag()" class="btn btn-default" id="enter">Test hechteg</div>
     </div>
     <div id="test_limit_bt">
-      <select id="select_size">
-        <option value="1920">1920</option>
-        <option value="1280">1280</option>
-        <option value="700">700</option>
-      </select>
-      <div onclick="set_size()" class="btn-default"></div>
     </div>
   <footer class="footer">
 
