@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>InstaParser</title>
+  <link rel="shortcut icon" th:href="@{/assets/images/favicon/favicon.png}">
+  <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
+  <script type="text/javascript" th:src="@{/assets/js/jquery.min.js}"></script>
+  <script type="text/javascript" th:src="@{/assets/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{/assets/js/jquery-ui.min.js}"></script>
+  <script>
+    function delete_find(){
+      for_removing=get("find_");
+      for_removing.parentNode.removeChild(for_removing);
+    }
+    var i=0;
+    var mas_test_h = ["summer"," "," ","summer","summer"];
+    var mas_test_l = [5,5,0,1000,0];
+    function test_heshtag()
+    {
+      
+      if(i>6){i=0;}
+      let obj = { hashtags: mas_test_h[i], postCount: mas_test_l[i]};
+      alert("test "+obj.hashtags+" "+obj.postCount);
+      i++;
+      console.clear();
+      send_data_test(obj);
+    }
+     function send_data_test(obj){
+   var mas_= obj.hashtags.split(" ");
+    var class_btn="btn-default";
+    var obj_ = { hashtags: mas_, postCount: obj.postCount};
+    var for_removing;
+    if(obj.hashtags==" " || obj.postCount==0){
+           check=false;
+           if(get("find_") != null){
+            alert("null");
+            delete_find();
+          }
+      alert("FILL ALL THE FIELDS!!!");}
+      else if(obj.postCount >50){
+        alert("The bigest number for limit");
+           check=false;
+            if(get("find_") != null){
+            alert("null");
+            delete_find();
+          }
+      }
+      else{
+        if(check==false)
+        {
+           check=true;
+            if(get("find_") != null){
+            alert("null");
+            delete_find();
+          }
+        }
+              $.ajax({
+              url: 'http://localhost:8080/api/task/create',
+              type: 'POST',
+              contentType:'application/json',
+              beforeSend: function()
+              {
+                 $("#h_3").show();
+              },
+            data: JSON.stringify(obj_)
+            }).then(function(data){
+               $("#h_3").hide();
+               console.log(data);
+               var link_id=data;
+               var div3 = document.createElement("div");
+               div3.setAttribute("id", "find_");
+               var link="/posts/"+link_id;
+               div3.innerHTML +="<a href="+link+" class="+class_btn+">FIND</a>";
+               document.getElementById("show_find").appendChild(div3);
+               check=false; 
+               window.location= "http://localhost:8080/api/posts/"+link_id;
+
+               //location.replace(link);
+  });
+        
+      }
+};
+      var cookie_array_hesh = [];
+      var cookie_array_task = [];
+      var check=true;
+      function setcookie(name,value){
+     var date = new Date(new Date().getTime() + 3600 * 31 * 1000);
+        document.cookie = name+" = "+value+";expires=" + date.toUTCString();
+      
+    }
+    function delete_cookie(cookie_name){
+        var cookie_date = new Date ( );  // Текущая дата и время
+        cookie_date.setTime ( cookie_date.getTime() - 1 );
+        document.cookie = cookie_name += "=; expires=" + cookie_date.toGMTString();
+    }
+    function delete_all_cookies(){
+       delete_cookie('hashtags');
+       delete_cookie('task_Id');
+    }
+   function getCookie(c_name) {
+    if (document.cookie.length > 0) {
+        c_start = document.cookie.indexOf(c_name + "=");
+        if (c_start != -1) {
+            c_start = c_start + c_name.length + 1;
+            c_end = document.cookie.indexOf(";", c_start);
+            if (c_end == -1) {
+                c_end = document.cookie.length;
+            }
+            return unescape(document.cookie.substring(c_start, c_end));
+        }
+    }
+    return "";
+}
+    $(document).ready(function(){
+      $("#h_3").hide();
+          if(getCookie('hashtags')==""){
+          }
+          else{
+            var show_in_list = JSON.parse(getCookie('hashtags'));
+            var show_in_list2 = JSON.parse(getCookie('task_Id'));
+            cookie_array_hesh=show_in_list;
+            cookie_array_task=show_in_list2;
+              for(var i = 0;i<show_in_list.length;i++){
+              var div4 = document.createElement("div4");
+              div4.innerHTML +="<li><a href="+show_in_list2[i]+">"+show_in_list[i]+"</a></li>";
+              document.getElementById("list").appendChild(div4);
+          } 
+          }
+
+    })
+    function get(id){return document.getElementById(id)}
+    function getVal(id){return Number(get(id).value)}
+    function send_data(){
+    var mas = get("hesh").value.split(" ");
+    var class_btn="btn-default";
+    var count =getVal("lim");
+    var obj = { hashtags: mas, postCount: count};
+    var for_removing;
+    if(mas=="" || count==""){
+           check=false;
+           if(get("find_") != null){
+            delete_find();
+          }
+      alert("FILL ALL THE FIELDS!!!");}
+      else if(count >50){
+        alert("The bigest number for limit");
+           check=false;
+            if(get("find_") != null){
+            alert("null");
+            delete_find();
+          }
+      }
+      else{
+        if(check==false)
+        {
+           check=true;
+            if(get("find_") != null){
+            alert("null");
+            delete_find();
+          }
+        }
+              $.ajax({
+              url: 'http://localhost:8080/api/task/create',
+              type: 'POST',
+              contentType:'application/json',
+              beforeSend: function()
+              {
+                 $("#h_3").show();
+              },
+            data: JSON.stringify(obj)
+            }).then(function(data){
+              $("#h_3").hide();
+               var link_id=data;
+               var div3 = document.createElement("div");
+               div3.setAttribute("id", "find_");
+               var link="/posts/"+link_id;
+               div3.innerHTML +="<a href="+link+" class="+class_btn+">FIND</a>";
+               document.getElementById("show_find").appendChild(div3);
+               check=false;
+               cookie_array_hesh.push(get("hesh").value);
+               cookie_array_task.push(link);
+               setcookie('hashtags',JSON.stringify(cookie_array_hesh));
+               setcookie('task_Id',JSON.stringify(cookie_array_task)); 
+
+               //location.replace(link);
+  });
+        
+      }
+};
+  </script>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <div class="header-bottom">
+          <h1 class="main_title">#InstaParser</h1>
+      </div>
+    </header>
+      <section class="bg-parallax parallax-window">
+        <div class="overlay">
+        </div>
+        <div class="container">
+          
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="parallax-text">
+                <h2 id="h_2" class="parallax_t __white" align="center">FIND YOUR #HASHTAG IN INSTAGRAM</h2>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 planner">
+              <div class="planner-block">
+                  <div class="row">
+                  <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                      <div class="form-group">
+                          <label>Enter #HASHTAG (exampl" summer travel...)</label>
+                          <input type="text" id="hesh" maxlength="25" class="form-control"/>
+                        </div>
+                      </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+                          <label>LIMIT(number for each hashtag)</label>
+                          <div class="theme-select">
+                            <input type="text" maxlength="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57' id="lim" class="form-control __plannerSelect">
+                            </input>
+                          </div>
+                      </div>
+                </div>
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <div class="planner-check-availability">
+                      <div onclick="send_data()" class="btn btn-default" id="enter">View Hashtags</div>
+                      <div id="show_find">
+                        <br>
+                        <br>
+                         </div> 
+                        
+                    </div>
+                  </div>
+                  <div >
+                    <H3  id="h_3" align=center>Yoy request is loading. Please wait</H3>
+                  </div>
+                  <div class="row">
+                    <H1 id="text_h1_">Previosly you search:</H1>
+                      <ul id="list">
+                        
+                      </ul>
+                  </div>
+<!--                 </form> -->
+              </div>
+            </div>
+            <!-- /planner-->
+          </div>
+        </div>
+
+    </section>
+    <div id="test_heshtag_bt">
+                      <div onclick="test_heshtag()" class="btn btn-default" id="enter">Test hechteg</div>
+    </div>
+    <div id="test_limit_bt">
+    </div>
+  <footer class="footer">
+
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="footer-bottom_copy">Copyright © 2018 ParserInstagram. Design by <a href="https://themeforest.net/user/Dankov" target="_blank">Triangle Team</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>DeluxHotel - Reservation Page 2 - Responsive Bootstrap 4 Template For Hotels</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" th:href="@{/assets/images/favicon/favicon.png}">
+  <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
+  <script type="text/javascript" th:src="@{/assets/js/jquery.min.js}"></script>
+  <script type="text/javascript" th:src="@{/assets/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{/assets/js/jquery-ui.min.js}"></script>
+  <script>
+
+    $(document).ready(function(){
+      $("#loading").hide();
+      var task_ID=window.location.pathname.split("/");
+      $.ajax({
+        type:'GET',
+        url:"http://localhost:8080/api/posts/"+task_ID[2],
+        beforeSend:function(){
+          $("#loading").show();
+        },
+        dataType:"json"
+      }).then(function(data){
+         $("#loading").hide();
+         console.log(data);
+         data.forEach(function(item,i,data){
+           var div3 = document.createElement("div3");
+                div3.innerHTML+="<div class=best-room_li><img id=for_img src="+data[i].imageUrl+" width=100%><p class=best-room_t><a href=https://instagram.com/p/"+data[i].shortCode+">View post</a></p><p>"+data[i].text+"</p><p>"+"Like Count:"+data[i].likesCount+"</p><p>"+data[i].date+"<p><hr></div>";
+            document.getElementById("rezult").appendChild(div3);
+         })
+      });
+    })
+  </script>
+</head>
+<body>
+  <!-- main wrapper -->
+  <div class="wrapper">
+    <!-- header -->
+    <header class="header">
+      <div class="header-bottom">
+          <h1 class="main_title">#InstaParser</h1>
+      </div>
+    </header>
+    <div class="wizzard reservation-1">
+
+      <div class="container2 Reservation-1">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="wizzard-list">
+       <!--        <h3 class="h3">Available rooms on specified date</h3> -->
+              <div id="loading">
+              <h3 class="h3_">Please Wait. Data is Loading...</h3>
+              </div>
+              <div class="row best-room_ul " id="rezult">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <footer class="footer">
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="footer-bottom_copy">Copyright © 2016 DeluxHotel. Design by <a href="https://themeforest.net/user/Dankov" target="_blank">Dankov</a></div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="footer-bottom_links">
+              <a class="active" href="index.html">Home</a>
+              <a href="gallery.html">Gallery</a>
+              <a href="blog.html">Blog</a>
+              <a href="wizzard-step1.html">Reservation</a>
+              <a href="#">Purchase</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
