@@ -25,7 +25,6 @@ public class PostService {
 	 * Searches posts in Instagram by given task, saves posts to the db.
 	 * @param task
 	 */
-	@Async
 	public void applyTask(Task task) {
 		List<List<Post>> list = new ArrayList<>();
 		task.getHashtags().forEach(hashtag -> {

@@ -2,6 +2,12 @@
 *.class
 /build
 /bin
+/gradle
+.gradle
+.classpath
+.project
+.settings
+.gradle
 # Log file
 *.log
 
