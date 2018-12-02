@@ -28,7 +28,54 @@
       send_data_test(obj);
     }
      function send_data_test(obj){
-   
+   var mas_= obj.hashtags.split(" ");
+    var class_btn="btn-default";
+    var obj_ = { hashtags: mas_, postCount: obj.postCount};
+    var for_removing;
+    if(obj.hashtags==" " || obj.postCount==0){
+           check=false;
+           if(get("find_") != null){
+            delete_find();
+          }
+      alert("FILL ALL THE FIELDS!!!");}
+      else if(obj.postCount >50){
+        alert("The bigest number for limit");
+           check=false;
+            if(get("find_") != null){
+            delete_find();
+          }
+      }
+      else{
+        if(check==false)
+        {
+           check=true;
+            if(get("find_") != null){
+            delete_find();
+          }
+        }
+              $.ajax({
+              url: 'http://localhost:8080/api/task/create',
+              type: 'POST',
+              contentType:'application/json',
+              beforeSend: function()
+              {
+                 $("#h_3").show();
+              },
+            data: JSON.stringify(obj_)
+            }).then(function(data){
+               $("#h_3").hide();
+               console.log(data);
+               var link_id=data;
+               var div3 = document.createElement("div");
+               div3.setAttribute("id", "find_");
+               var link="/posts/"+link_id;
+               div3.innerHTML +="<a href="+link+" class="+class_btn+">FIND</a>";
+               document.getElementById("show_find").appendChild(div3);
+               check=false; 
+             
+  });
+        
+      }
 };
       var cookie_array_hesh = [];
       var cookie_array_task = [];
